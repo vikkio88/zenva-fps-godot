@@ -1,0 +1,177 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://scripts/Player.gd" type="Script" id=1]
+[ext_resource path="res://Models/Weapon/shotgun.obj" type="ArrayMesh" id=2]
+[ext_resource path="res://sounds/gunshot.ogg" type="AudioStream" id=3]
+[ext_resource path="res://sounds/gunclick.ogg" type="AudioStream" id=4]
+[ext_resource path="res://sounds/hurt.ogg" type="AudioStream" id=5]
+
+[sub_resource type="CapsuleShape" id=1]
+radius = 0.5
+
+[sub_resource type="CapsuleMesh" id=2]
+radius = 0.5
+
+[sub_resource type="Animation" id=3]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera/Gun:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, -180, 0 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Camera:fov")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 70.0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Camera:environment")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ null ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Camera:rotation_degrees")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "hurt"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.3, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( 0, -10, 0 ), Vector3( 0, 10, 0 ), Vector3( 0, 0, 0 ) ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "shoot"
+loop = true
+tracks/0/type = "value"
+tracks/0/path = NodePath("Camera/Gun:rotation_degrees")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0.4, 0.7, 1 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 0,
+"values": [ Vector3( -10, -180, 0 ), Vector3( 10, -180, 0 ), Vector3( 0, -180, 0 ) ]
+}
+
+[node name="Player" type="KinematicBody"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0 )
+script = ExtResource( 1 )
+
+[node name="CollisionShape" type="CollisionShape" parent="."]
+transform = Transform( 1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0 )
+shape = SubResource( 1 )
+
+[node name="MeshInstance" type="MeshInstance" parent="CollisionShape"]
+mesh = SubResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+
+[node name="Camera" type="Camera" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.783964, 0 )
+current = true
+
+[node name="Muzzle" type="Spatial" parent="Camera"]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, 0.193638, -0.240992, -0.856279 )
+
+[node name="CenterView" type="Spatial" parent="Camera"]
+transform = Transform( 1, 0, 0, 0, 0.976526, -0.2154, 0, 0.2154, 0.976526, 0, -0.365794, -1.66358 )
+
+[node name="Gun" type="MeshInstance" parent="Camera"]
+transform = Transform( -10, 0, 8.74227e-07, 0, 10, 0, -8.74228e-07, 0, -10, 0.195029, -0.330012, -0.5 )
+mesh = ExtResource( 2 )
+skeleton = NodePath("../..")
+material/0 = null
+material/1 = null
+material/2 = null
+material/3 = null
+material/4 = null
+material/5 = null
+material/6 = null
+material/7 = null
+material/8 = null
+material/9 = null
+material/10 = null
+material/11 = null
+material/12 = null
+material/13 = null
+material/14 = null
+material/15 = null
+material/16 = null
+material/17 = null
+material/18 = null
+material/19 = null
+material/20 = null
+material/21 = null
+material/22 = null
+material/23 = null
+material/24 = null
+material/25 = null
+material/26 = null
+material/27 = null
+material/28 = null
+material/29 = null
+material/30 = null
+material/31 = null
+material/32 = null
+
+[node name="Gunshot" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 3 )
+volume_db = -22.286
+
+[node name="GunClick" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -22.286
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 5 )
+volume_db = -22.286
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+anims/RESET = SubResource( 3 )
+anims/hurt = SubResource( 5 )
+anims/shoot = SubResource( 4 )
+
+[connection signal="finished" from="Gunshot" to="." method="_on_Gunshot_finished"]
+[connection signal="finished" from="GunClick" to="." method="_on_GunClick_finished"]
+[connection signal="finished" from="Hurt" to="." method="_on_GunClick_finished"]

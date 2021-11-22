@@ -1,0 +1,15 @@
+[gd_resource type="Theme" load_steps=4 format=2]
+
+[ext_resource path="res://Font/ubu.tres" type="DynamicFont" id=1]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 1, 1, 1, 1 )
+
+[sub_resource type="StyleBoxFlat" id=2]
+bg_color = Color( 0.419608, 0, 0, 1 )
+
+[resource]
+Label/fonts/font = ExtResource( 1 )
+ProgressBar/fonts/font = ExtResource( 1 )
+ProgressBar/styles/bg = SubResource( 1 )
+ProgressBar/styles/fg = SubResource( 2 )

@@ -1,0 +1,44 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Font/ubu.tres" type="DynamicFont" id=1]
+[ext_resource path="res://theme.tres" type="Theme" id=2]
+[ext_resource path="res://scripts/UI.gd" type="Script" id=3]
+
+[node name="UI" type="Control"]
+anchor_left = 0.015
+anchor_top = 0.602
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = -19.2
+margin_top = -433.44
+script = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Health" type="ProgressBar" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -38.0
+margin_right = 208.0
+margin_bottom = -8.0
+theme = ExtResource( 2 )
+value = 50.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Ammo" type="Label" parent="."]
+anchor_top = 1.0
+anchor_bottom = 1.0
+margin_left = 8.0
+margin_top = -75.0
+margin_right = 143.0
+margin_bottom = -4.0
+custom_fonts/font = ExtResource( 1 )
+text = "Ammo: 10
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}

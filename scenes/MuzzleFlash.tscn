@@ -1,0 +1,49 @@
+[gd_scene load_steps=10 format=2]
+
+[ext_resource path="res://Models/Particles/exp1.png" type="Texture" id=1]
+[ext_resource path="res://scripts/MuzzleFlash.gd" type="Script" id=2]
+
+[sub_resource type="SpatialMaterial" id=1]
+flags_unshaded = true
+vertex_color_use_as_albedo = true
+params_blend_mode = 1
+params_billboard_mode = 3
+particles_anim_h_frames = 1
+particles_anim_v_frames = 1
+particles_anim_loop = false
+albedo_texture = ExtResource( 1 )
+
+[sub_resource type="Gradient" id=2]
+
+[sub_resource type="GradientTexture" id=3]
+gradient = SubResource( 2 )
+
+[sub_resource type="Curve" id=4]
+_data = [ Vector2( 0.100515, 0.311516 ), 0.0, 0.0, 0, 0, Vector2( 0.89433, 0.347552 ), 0.885223, 0.0, 0, 0 ]
+
+[sub_resource type="CurveTexture" id=5]
+curve = SubResource( 4 )
+
+[sub_resource type="ParticlesMaterial" id=6]
+emission_shape = 1
+emission_sphere_radius = 0.01
+spread = 18.04
+gravity = Vector3( 0, 1, 0 )
+angle = 360.0
+angle_random = 1.0
+scale_curve = SubResource( 5 )
+color_ramp = SubResource( 3 )
+
+[sub_resource type="QuadMesh" id=7]
+
+[node name="MuzzleFlash" type="Spatial"]
+script = ExtResource( 2 )
+
+[node name="Particles" type="Particles" parent="."]
+transform = Transform( 1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00166416, 0.000878632, -0.00808549 )
+material_override = SubResource( 1 )
+emitting = false
+lifetime = 0.1
+one_shot = true
+process_material = SubResource( 6 )
+draw_pass_1 = SubResource( 7 )
